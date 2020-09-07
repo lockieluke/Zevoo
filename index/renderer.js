@@ -4,6 +4,7 @@ let browserviewids = []
 let serviceCounter = 0
 let focusedview = 0
 let tabstore = []
+let tabservices = []
 
 const closeBtn = document.getElementById('closebtn')
 const maxBtn = document.getElementById('maxbtn')
@@ -43,6 +44,7 @@ function addNewService(name) {
 
     focusedview = serviceCounter
     tabstore.push(serviceCounter)
+    tabservices.push(name)
     serviceCounter++
 
     app.addEventListener('click', (event)=>{
