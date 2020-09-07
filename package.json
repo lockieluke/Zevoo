@@ -1,0 +1,15 @@
+{
+  "name": "zevoo",
+  "version": "1.0.0",
+  "description": "All In One Messenger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lockie Luke",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.1"
+  }
+}

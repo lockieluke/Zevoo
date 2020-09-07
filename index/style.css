@@ -1,0 +1,95 @@
+#titlebar {
+    height: 30px;
+    width: 100%;
+    background-color: rgb(47,49,54);
+    display: table-row;
+    margin: 0;
+    float: right;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+}
+
+.titlebarbtns {
+    float: right;
+    width: 50px;
+    height: 30px;
+    color: white;
+    text-align: center;
+    cursor: default;
+    padding-top: 5px;
+    position: relative;
+    display: table-cell;
+    -webkit-app-region: no-drag;
+    transition: background-color 0.3s;
+}
+
+.titlebarbtns:hover {
+    background-color: grey;
+}
+
+#closebtn:hover {
+    background-color: red;
+}
+
+#content {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+
+#appbar {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(47,49,54);
+}
+
+#addapp {
+    position: relative;
+    z-index: 99;
+    background-color: transparent;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    float: right;
+    transition: background-color 0.3s;
+}
+
+#addapp label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app {
+    z-index: 99;
+    background-color: transparent;
+    color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    transition: background-color 0.3s;
+    display: table-cell;
+}
+
+.appicon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    margin: 10px 10px;
+}
+
+#addapp:hover, .app:hover{
+    background-color: rgba(256, 256, 256, 0.5);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+}
