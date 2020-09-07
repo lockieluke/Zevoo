@@ -121,7 +121,7 @@ function setupView(name) {
                 y: 80,
                 x: 0,
                 height: win.getBounds().height - 98,
-                width: win.getBounds().width - 8
+                width: win.getBounds().width - 15
             })
         } else {
             webview.setBounds({
