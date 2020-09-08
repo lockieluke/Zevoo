@@ -2,6 +2,7 @@ const {ipcRenderer} = require('electron')
 let {services, servicesURLs, serviceIcons} = require('../data/services')
 let browserviewids = []
 let serviceCounter = 0
+let tabCounter = 0
 let focusedview = 0
 let tabstore = []
 let tabservices = []
@@ -46,14 +47,33 @@ function addNewService(name) {
     tabstore.push(serviceCounter)
     tabservices.push(name)
     serviceCounter++
+    tabCounter++
 
     app.addEventListener('click', (event)=>{
         focusedview = app.id
         ipcRenderer.send('console', "Focusing to " + focusedview)
         ipcRenderer.send('focusapp', browserviewids[focusedview])
     })
+
+    app.addEventListener('contextmenu', async (e)=>{
+        e.preventDefault()
+        await ipcRenderer.send('contextmenu', app.id)
+    })
 }
 
 ipcRenderer.on('createdview', (event, args)=>{
     browserviewids.push(args)
+})
+
+ipcRenderer.on('removeapp', (event, args)=>{
+    tabCounter--
+    tabstore.slice(args, args)
+    tabservices.slice(args, args)
+    document.getElementById(args).remove()
+    ipcRenderer.send('removebv', browserviewids[args])
+    if (focusedview == args) {
+        ipcRenderer.send('focusapp', browserviewids[0])
+    } else {
+
+    }
 })

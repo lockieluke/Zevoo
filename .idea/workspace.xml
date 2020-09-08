@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b5f24b1-2062-4733-b3bd-90cb48dfe253" name="Default Changelist" comment="" />
+    <list default="true" id="2b5f24b1-2062-4733-b3bd-90cb48dfe253" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/index/renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +24,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -34,7 +43,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/.bin/electron.cmd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -43,6 +52,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -66,6 +76,8 @@
       <option name="presentableId" value="Default" />
       <updated>1599461673543</updated>
       <workItem from="1599461675885" duration="16942000" />
+      <workItem from="1599485156466" duration="402000" />
+      <workItem from="1599523478982" duration="3828000" />
     </task>
     <servers />
   </component>
@@ -81,29 +93,33 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="167" key="FileChooserDialogImpl/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599461980674" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1599482990081">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1599526655906">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599482990081" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1599482990081">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599526655906" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1599526655905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599482990081" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1599482990081">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599526655905" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1599526655905">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599482990081" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1599482990081">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599526655905" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1599526655906">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599482990081" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599526655906" />
     <state x="485" y="220" key="jetbrains.nodejs.interpreters-dialog" timestamp="1599461981433">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="485" y="220" key="jetbrains.nodejs.interpreters-dialog/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599461981433" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599477920758">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1599524209348">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599477920758" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599524209348" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599524453636">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/286.1080.1366.728@0.0.1536.824" timestamp="1599524453636" />
   </component>
 </project>

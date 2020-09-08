@@ -8,7 +8,9 @@
   },
   "author": "Lockie Luke",
   "license": "UNLICENSED",
-  "dependencies": {},
+  "dependencies": {
+    "electron-context-menu": "^2.3.0"
+  },
   "devDependencies": {
     "electron": "^10.1.1"
   }

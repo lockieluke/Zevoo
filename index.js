@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, BrowserView, globalShortcut } = require('electron')
+const { app, BrowserWindow, ipcMain, BrowserView, globalShortcut, Menu, MenuItem } = require('electron')
 const {servicesURLs, serviceCounter, services} = require(__dirname + '/data/services')
 
 let addappMenu
@@ -116,20 +116,22 @@ function setupView(name) {
     })
 
     function resizeWebview() {
-        if (win.isMaximized()) {
-            webview.setBounds({
-                y: 80,
-                x: 0,
-                height: win.getBounds().height - 98,
-                width: win.getBounds().width - 15
-            })
-        } else {
-            webview.setBounds({
-                y: 80,
-                x: 0,
-                height: win.getBounds().height - 80,
-                width: win.getBounds().width
-            })
+        if (!webview.isDestroyed() && win.getBrowserView() == webview) {
+            if (win.isMaximized()) {
+                webview.setBounds({
+                    y: 80,
+                    x: 0,
+                    height: win.getBounds().height - 98,
+                    width: win.getBounds().width - 15
+                })
+            } else {
+                webview.setBounds({
+                    y: 80,
+                    x: 0,
+                    height: win.getBounds().height - 80,
+                    width: win.getBounds().width
+                })
+            }
         }
     }
 
@@ -157,10 +159,56 @@ ipcMain.on('finishservice', (event, args)=>{
 
 ipcMain.on('focusapp', (event, args)=>{
     win.setBrowserView(BrowserView.fromId(args))
+
+    const webview = BrowserView.fromId(args)
+
+    try {
+        if (!webview.isDestroyed() && win.getBrowserView() === webview) {
+            if (win.isMaximized()) {
+                webview.setBounds({
+                    y: 80,
+                    x: 0,
+                    height: win.getBounds().height - 98,
+                    width: win.getBounds().width - 15
+                })
+            } else {
+                webview.setBounds({
+                    y: 80,
+                    x: 0,
+                    height: win.getBounds().height - 80,
+                    width: win.getBounds().width
+                })
+            }
+        }
+    } catch {}
 })
 
 ipcMain.on('console', (event, args)=>{
     console.log(args)
+})
+
+ipcMain.on('contextmenu', (event, args)=>{
+    const menu = new Menu()
+    menu.append(new MenuItem({
+        label: 'Remove',
+        click() {
+            console.log("Removing service " + args)
+            win.webContents.send('removeapp', args)
+        },
+        toolTip: 'Remove current service'
+    }))
+    menu.popup({
+        window: win,
+    })
+})
+
+ipcMain.on('removebv', (event, args)=>{
+    try {
+        const bv = BrowserView.fromId(args)
+        win.removeBrowserView(bv)
+        win.setBrowserView(null)
+        bv.destroy()
+    } catch {}
 })
 
 app.whenReady().then(createWindow)
