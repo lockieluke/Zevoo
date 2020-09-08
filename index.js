@@ -1,8 +1,12 @@
 const { app, BrowserWindow, ipcMain, BrowserView, globalShortcut, Menu, MenuItem } = require('electron')
-const {servicesURLs, serviceCounter, services} = require(__dirname + '/data/services')
+const {servicesURLs} = require(__dirname + '/data/services')
+const rimraf = require('rimraf')
+const config = require('electron-json-config')
 
 let addappMenu
 let win
+let serviceCounter = 0
+let cachePath = []
 
 function createWindow () {
     win = new BrowserWindow({
@@ -22,8 +26,22 @@ function createWindow () {
     win.setMenuBarVisibility(false)
     win.setBackgroundColor('#ffffff')
 
+    let serviceLength = config.get('length')
+    let tabservices = []
+    for (let i = 0; i < serviceLength; i++) {
+        tabservices.push(config.get(i.toString()))
+        console.log("Reading settings from save, service is " + config.get(i.toString()))
+        cachePath.push(config.get(i.toString() + '-cache'))
+        console.log("Reading cache path from save, cache path is " + config.get(i.toString() + '-cache'))
+    }
+    console.log("Restore service length " + config.get('length'))
+
     win.webContents.on('dom-ready', async ()=>{
         await win.show()
+        for (let i = 0; i < tabservices.length; i++) {
+            win.webContents.send('addservice', tabservices[i])
+            setupView(tabservices[i], cachePath[i])
+        }
     })
 
     ipcMain.on('close', ()=>{
@@ -88,15 +106,17 @@ function closeAddMenu() {
     } catch {}
 }
 
-function setupView(name) {
+function setupView(name, cache = 'persist:' + app.getPath('appData') + '\\' + serviceCounter + 'cache') {
     console.log("Setting view for service " + name)
     const webview = new BrowserView({
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
             sandbox: true,
+            partition: cache
         }
     })
+
     for (let i = 0; i < BrowserView.getAllViews().length; i++) {
         win.removeBrowserView(BrowserView.getAllViews()[i])
     }
@@ -114,6 +134,9 @@ function setupView(name) {
     win.on('resize', ()=>{
         resizeWebview()
     })
+
+    config.set(serviceCounter.toString(), name)
+    config.set(serviceCounter.toString() + '-cache', 'persist:' + app.getPath('appData') + '\\' + serviceCounter + 'cache')
 
     function resizeWebview() {
         if (!webview.isDestroyed() && win.getBrowserView() == webview) {
@@ -149,6 +172,9 @@ function setupView(name) {
     webview.webContents.loadURL(servicesURLs[name])
 
     win.webContents.send('createdview', webview.id)
+    serviceCounter++
+    config.set('length', serviceCounter)
+    console.log("ServiceCount from save " + config.get('length'))
 }
 
 ipcMain.on('finishservice', (event, args)=>{
@@ -202,13 +228,25 @@ ipcMain.on('contextmenu', (event, args)=>{
     })
 })
 
-ipcMain.on('removebv', (event, args)=>{
+ipcMain.on('removebv', (event, args = [])=>{
     try {
-        const bv = BrowserView.fromId(args)
+        console.log("Preparing to remove service " + args)
+        const bv = BrowserView.fromId(parseInt(args.toString()))
         win.removeBrowserView(bv)
         win.setBrowserView(null)
         bv.destroy()
-    } catch {}
+        serviceCounter--
+        config.set('length', serviceCounter)
+    } catch (e) {
+        console.log("Error happened when removing service " + e)
+    }
+})
+
+ipcMain.on('removecache', (event, args)=>{
+    require('electron').session.fromPartition(config.get(args.toString() + '-cache')).clearCache()
+    console.log("Removing cache from " + config.get(args.toString() + '-cache'))
+    config.delete(args.toString() + '-cache')
+    config.delete(args)
 })
 
 app.whenReady().then(createWindow)

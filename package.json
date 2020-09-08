@@ -9,7 +9,9 @@
   "author": "Lockie Luke",
   "license": "UNLICENSED",
   "dependencies": {
-    "electron-context-menu": "^2.3.0"
+    "electron-context-menu": "^2.3.0",
+    "electron-json-config": "^1.5.3",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "electron": "^10.1.1"
