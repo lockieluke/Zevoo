@@ -71,7 +71,7 @@ ipcRenderer.on('removeapp', (event, args)=>{
     tabservices.slice(args, args)
     document.getElementById(args).remove()
     ipcRenderer.send('removebv', browserviewids[args].toString())
-    ipcRenderer.send('removecache', args.toString())
+    ipcRenderer.send('removekeys', args)
     if (focusedview == args) {
         ipcRenderer.send('focusapp', browserviewids[0])
     } else {
